@@ -1,14 +1,15 @@
 "use client";
 import { LightRays } from "@/components/ui/light-rays";
 import CTAButton from "@/components/CTAButton";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function Home() {
   const link = document.createElement("a");
+  const router = useRouter();
 
   return (
     <div className="flex flex-col">
-
       <div className="min-h-screen flex flex-col items-center justify-center bg-black p-12">
         <div className="text-center">
           <LightRays />
@@ -17,6 +18,12 @@ export default function Home() {
         </div>
 
         <div>
+
+          <CTAButton
+            label="Me contacter"
+            onClick={() => router.push('/contact')}
+          />
+
           <CTAButton
             label="Télécharger mon CV"
             onClick={() => {
@@ -26,10 +33,7 @@ export default function Home() {
             }}
           />
         </div>
-
       </div>
-
-    
     </div>
   );
 }
