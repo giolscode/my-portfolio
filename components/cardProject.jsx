@@ -9,7 +9,7 @@ const cardProject = ({ title, imageSrc, description, linkUrl }) => {
   };
 
   return (
-    <div className="flex flex-col items-center text-center space-y-6 p-8 bg-gray-100 rounded-lg shadow-md ml-10">
+    <div className="flex flex-col items-center text-center space-y-6 p-8 bg-gray-100 rounded-lg shadow-md">
     <h2 className="text-3xl font-bold text-gray-800">{title}</h2>
     <img
         src={imageSrc}
