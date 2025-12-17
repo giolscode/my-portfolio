@@ -93,9 +93,29 @@ export default function Home() {
           <div className="flex flex-wrap gap-4 justify-center p-5">
             {/* Une carte de compétence */}
             <SkillCard 
+              title="Développement orientée objet"
+              icons="python,c,cpp"
+              progress="60"
+            />
+            <SkillCard 
               title="Technologie Front-end"
-              icons="html,css,js,php"
+              icons="wordpress,react,ts,nextjs"
               progress="75"
+            />
+            <SkillCard 
+              title="Technologie Back-end"
+              icons="nodejs,firebase"
+              progress="75"
+            />
+            <SkillCard 
+              title="Base de données"
+              icons="mysql"
+              progress="50"
+            />
+            <SkillCard 
+              title="Outil"
+              icons="androidstudio,vscode,apple"
+              progress="100"
             />
           </div>
           
