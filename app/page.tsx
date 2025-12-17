@@ -7,6 +7,7 @@ import { RetroGrid } from "@/components/ui/retro-grid";
 
 import CTAButton from "@/components/CTAButton";
 import ProjectCard from "@/components/cardProject";
+import SkillCard from "@/components/skillCard"
 import Image from "next/image";
 
 export default function Home() {
@@ -89,12 +90,47 @@ export default function Home() {
       <div className="min-h-screen h-auto bg-white text-black pt-4 z-0.5">
         <h1 className=" text-4xl text-center font-bold p-5"> Mon bagages techniques </h1>
 
+          <div className="flex flex-wrap gap-4 justify-center p-5">
+            {/* Une carte de compétence */}
+            <SkillCard 
+              title="Développement orientée objet"
+              icons="python,c,cpp"
+              progress="60"
+            />
+            <SkillCard 
+              title="Technologie Front-end"
+              icons="wordpress,react,ts,nextjs"
+              progress="75"
+            />
+            <SkillCard 
+              title="Technologie Back-end"
+              icons="nodejs,firebase"
+              progress="75"
+            />
+            <SkillCard 
+              title="Base de données"
+              icons="mysql"
+              progress="50"
+            />
+            <SkillCard 
+              title="Outil"
+              icons="androidstudio,vscode,apple"
+              progress="100"
+            />
+          </div>
+          
       </div>
 
       {/* Section Projets */}
       <div className="min-h-screen h-auto w-full text-white bg-black py-10 px-4 z-0.5">
         <h1 className=" text-4xl text-center font-bold p-5"> Mon bagages techniques </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <ProjectCard
+            title="Skyrage"
+            imageSrc="/projet.jpeg"
+            description="Skyrage est un projet collaboratif développé dans le cadre de mes études."
+            linkUrl="https://github.com/CorbeauBaptiste/Skyrage"
+          />
           <ProjectCard
             title="Skyrage"
             imageSrc="/projet.jpeg"
