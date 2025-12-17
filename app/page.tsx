@@ -30,11 +30,14 @@ export default function Home() {
           Giovanni LOSAT
         </AuroraText>
         <br />
-        <h2 className="text-white text-2xl z-10 font-bold"> En construction, comme mes projets mais avec une meilleure doc. 😁 </h2>
+        <h2 className="text-white text-2xl z-10 font-medium m-5"> En construction, comme mes projets mais avec une meilleure doc. 😁 </h2>
         <br />
+        <h3 className="text-white text-xl z-10 font-medium"> 
+          Statut actuel : <span className="font-bold text-red-600"> En recherche d'un stage Développeur Full-stack </span>
+        </h3>
         <CTAButton
-          label="Me contacter"
-          className="bg-transparent hover:bg-gray-800 border border-gray-500 transition-colors"
+          label=" En savoir un peu plus sur moi? Clique!!! "
+          className="bg-transparent hover:bg-gray-800 border border-gray-500 transition-colors m-5"
           onClick={() => window.open("", "_blank")}
         />
 
