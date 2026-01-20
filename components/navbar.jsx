@@ -19,7 +19,7 @@ export default function TopNavbar() {
         <span>À propos</span>
       </Link>
       <Link
-        href="/portfolio"
+        href="/projet"
         className="flex flex-col items-center hover:text-orange-500"
       >
         <FaFolder size={20} />
