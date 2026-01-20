@@ -5,6 +5,7 @@ import { DotPattern } from "@/components/ui/dot-pattern";
 
 import Navbar from "@/components/navbar";
 import CTAButton from "@/components/CTAButton";
+import Footer from "@/components/footer";
 import Image from "next/image";
 
 export default function About(){
@@ -98,7 +99,7 @@ export default function About(){
                     onClick={() => router.push("/projet")}
                 />
             </div>
-            
+            <Footer />
         </div>
     );
 }
