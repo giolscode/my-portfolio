@@ -1,36 +1,38 @@
 "use client";
-import { LightRays } from "@/components/ui/light-rays";
-import CTAButton from "@/components/CTAButton";
+
 import { useRouter } from "next/navigation";
+import { DotPattern } from "@/components/ui/dot-pattern";
+import { WordPullUpText } from "@/components/ui/word-pull-up-text";
+
+import Navbar from "@/components/navbar";
+import CTAButton from "@/components/CTAButton";
 import Image from "next/image";
 
 export default function Home() {
-  const link = document.createElement("a");
   const router = useRouter();
 
   return (
-    <div className="flex flex-col">
-      <div className="min-h-screen flex flex-col items-center justify-center bg-black p-12">
-        <div className="text-center">
-          <LightRays />
-          <h2 className="text-3xl font-bold mb-4 text-white"> Giovanni LOSAT </h2>
-          <span className="text-xl text-gray-300"> Développeur full-stack à en devenir... </span>
-        </div>
+    <div className="flex flex-col bg-black min-h-screen relative overflow-hidden">
+      <DotPattern width={20} height={20} radius={1} color="#ff6600" className="absolute inset-0 opacity-30" />
+      <Navbar />
 
-        <div>
+      <div className="flex flex-col flex-grow justify-center items-center">
+            <h1>
 
+            </h1>
+            <WordPullUpText
+              text="Bienvenue sur mon portfolio"
+              className="text-white text-center text-4xl font-bold cursor-pointer"
+            />
+
+        <div className="mt-8">
           <CTAButton
-            label="Me contacter"
-            onClick={() => router.push('/contact')}
+            label="En savoir plus sur moi"
+            onClick={() => router.push("/about")}
           />
-
           <CTAButton
-            label="Télécharger mon CV"
-            onClick={() => {
-              link.href = "/CV_LOSAT_Giovanni.pdf";
-              link.download = "CV_LOSAT.pdf";
-              link.click();
-            }}
+            label="Voir mes projets"
+            onClick={() => router.push("/projet")}
           />
         </div>
       </div>
