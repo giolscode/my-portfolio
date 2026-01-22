@@ -13,7 +13,8 @@ export default function About(){
 
     return(
         <div className="flex flex-col bg-black min-h-screen relative overflow-hidden">
-            <div className="fixed absolute inset-0">
+
+            <div className="fixed inset-0 pointer-events-none">
                 <DotPattern width={20} height={20} radius={1} color="#ffffff" className="opacity-30" />
             </div>
             <Navbar />
@@ -35,7 +36,7 @@ export default function About(){
                     alt="Giovanni Losat"
                     width={500}
                     height={500}
-                    className="mx-auto"
+                    className="mx-auto relative"
                     />
                 </div>
             </div>
@@ -48,7 +49,7 @@ export default function About(){
                     alt="Giovanni Losat"
                     width={400}
                     height={400}
-                    className="mx-auto"
+                    className="mx-auto relative"
                     />
                 </div>
 
@@ -80,19 +81,14 @@ export default function About(){
                     alt="Giovanni Losat"
                     width={500}
                     height={500}
-                    className="mx-auto"
+                    className="mx-auto relative"
                     />
                 </div>
             </div>
-            <div className="m-10 justify-center items-center flex">
+            <div className="m-10 z-index justify-center items-center flex">
                 <CTAButton
                     label="Télécharger mon CV"
-                    onClick={() => {
-                        const link = document.createElement('a');
-                        link.href = '/CV_Giovanni_LOSAT.pdf';
-                        link.download = 'CV_Giovanni_LOSAT.pdf';
-                        link.click();   
-                    }}
+                    onClick={() => window.open("/CV_LOSAT_Giovanni.pdf", "_blank")}
                 />
                 <CTAButton
                     label="Voir mes projets"

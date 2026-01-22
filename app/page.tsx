@@ -17,10 +17,13 @@ export default function Home() {
       <Navbar />
 
       <div className="flex flex-col flex-grow justify-center items-center">
-        <WordPullUpText
-          text="Bienvenue sur mon portfolio"
-          className="text-white text-center text-4xl font-bold cursor-pointer"
-        />
+            <h1>
+
+            </h1>
+            <WordPullUpText
+              text="Bienvenue sur mon portfolio"
+              className="text-white text-center text-4xl font-bold cursor-pointer"
+            />
 
         <div className="mt-8">
           <CTAButton
