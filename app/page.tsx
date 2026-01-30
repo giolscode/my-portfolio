@@ -5,6 +5,7 @@ import { DotPattern } from "@/components/ui/dot-pattern";
 import { WordPullUpText } from "@/components/ui/word-pull-up-text";
 
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import CTAButton from "@/components/CTAButton";
 import Image from "next/image";
 
@@ -17,15 +18,12 @@ export default function Home() {
       <Navbar />
 
       <div className="flex flex-col flex-grow justify-center items-center">
-            <h1>
+          <h1 className="text-white text-6xl"> Hey je suis un </h1>
+          <WordPullUpText text="Développeur informatique " className="text-8xl text-orange-500" />
+          <h1 className="text-white text-6xl"> prêt à  </h1>
+          <WordPullUpText text="relever des nouveaux défis" className="text-8xl text-yellow-500" />
 
-            </h1>
-            <WordPullUpText
-              text="Bienvenue sur mon portfolio"
-              className="text-white text-center text-4xl font-bold cursor-pointer"
-            />
-
-        <div className="mt-8">
+          <div className="mt-8">
           <CTAButton
             label="En savoir plus sur moi"
             onClick={() => router.push("/about")}
@@ -36,6 +34,7 @@ export default function Home() {
           />
         </div>
       </div>
+        <Footer />
     </div>
   );
 }
