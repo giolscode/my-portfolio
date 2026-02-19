@@ -11,6 +11,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import CTAButton from "@/components/CTAButton";
 import CardProject from "@/components/cardProject";
+import FormationTimeline from "@/components/FormationTimeline";
 
 import Image from "next/image";
 
@@ -128,13 +129,39 @@ export default function Home() {
 
             {/* carousel */}
 
-            <AuroraText 
-              colors={["#ffd322","#FFAE00","#ff6600"]} 
-              className="text-2xl font-bold mt-4 text-center"
-            > Parcours scolaire et mes expériences professionelles </AuroraText>
-
             {/* schéma de mon parcours */}
-            
+            <div className="mt-4">
+              <FormationTimeline
+                items={[
+                  {
+                    title: "Employé polyvalent — Ecomax, Martinique",
+                    date: "juin 2025 - août 2025",
+                    description: "Job d'été",
+                  },
+                  {
+                    title: "Développeur web — Centre de mémoire d'urbanisation de l'agglomération (CMUA), Dunkerque",
+                    date: "juin 2025 - août 2025",
+                    description: "Stage de 2 mois — Conception et développement d'un ensemble de page pour la gestion des archives numérisés du site web.",
+                  },
+                  {
+                    title: "BUT Informatique — IUT Université du Littoral Côte d’Opale, Calais",
+                    date: "2023 – 2026 (3ème année en cours)",
+                    description: "Parcours A — Spécialité : Réalisation d'applications (conception, développement, validation).",
+                  },
+                  {
+                    title: "Employé polyvalent — Ecomax, Martinique",
+                    date: "juin 2023 - août 2023",
+                    description: "Job d'été",
+                  },
+                  {
+                    title: "Baccalauréat Général — Lycée La Jetée, Martinique",
+                    date: "2023 — Obtention en juin 2023 (Mention Assez Bien)",
+                    description: "Spécialités : Mathématiques, Numérique et Sciences Informatiques (NSI), Physique-Chimie.",
+                  },
+                ]}
+              />
+
+            </div>
           </div>
 
           {/* Mon BUT en 180s */}
