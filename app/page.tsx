@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { ShineBorder } from "@/components/ui/shine-border";
+import { Pointer } from "@/components/ui/pointer";
 
 
 import SkillCard from "@/components/skillCard";
@@ -22,6 +23,7 @@ export default function Home() {
     <div className="flex flex-col bg-black min-h-screen relative overflow-hidden">
       <DotPattern width={20} height={20} radius={1} color="#ff6600" className="absolute inset-0 opacity-30" />
       <Navbar />
+      <Pointer />
 
         {/* Accueil */}
           <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center px-4 md:px-10 lg:px-75 relative z-10 gap-8 md:gap-16">
@@ -121,13 +123,16 @@ export default function Home() {
               className="text-4xl font-bold mt-4 text-center"
             > Un peu plus sur moi </AuroraText>
 
-            <p className="text-lg md:text-xl mt-8 leading-relaxed text-center max-w-3xl">
+            <p className="text-lg md:text-xl mt-8 leading-relaxed text-center max-w-6xl">
               Je suis originaire de la Martinique, une île des Caraïbes, et j'ai déménagé en France pour poursuivre mes études en informatique. 
               Passionné par la technologie depuis mon plus jeune âge, j'ai toujours été fasciné par la manière dont les applications et les sites web sont créés. 
               En dehors de mes études, j'aime explorer de nouvelles technologies, travailler sur des projets personnels et contribuer à des projets open source. 
             </p>
 
             {/* carousel */}
+            <div className="w-full mt-10">
+  
+            </div>
 
             {/* schéma de mon parcours */}
             <div className="mt-4">
