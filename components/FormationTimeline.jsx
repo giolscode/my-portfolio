@@ -7,7 +7,7 @@ const FormationTimeline = ({ items }) => {
         <div className="justtify-center items-center text-center">
             <AuroraText 
                 colors={["#ffd322","#FFAE00","#ff6600"]} 
-                className="text-xl font-bold mt-4"
+                className="text-lg sm:text-xl font-bold mt-4"
             > Parcours scolaire et mes expériences professionelles </AuroraText>
         </div>
 
@@ -20,9 +20,9 @@ const FormationTimeline = ({ items }) => {
                         <circle cx="12" cy="12" r="3" stroke="#fff" strokeWidth="1.5" />
                         </svg>
                     </span>
-                    <h3 className="text-lg font-semibold">{item.title}</h3>
-                    <p className="text-gray-300">{item.date}</p>
-                    {item.description && <p className="text-gray-300">{item.description}</p>}
+                    <h3 className="text-base sm:text-lg font-semibold">{item.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-300">{item.date}</p>
+                    {item.description && <p className="text-sm sm:text-base text-gray-300">{item.description}</p>}
                     </li>
                 ))}
             </ol>
