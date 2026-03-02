@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { ShineBorder } from "@/components/ui/shine-border";
@@ -17,7 +16,12 @@ import FormationTimeline from "@/components/FormationTimeline";
 import Image from "next/image";
 
 export default function Home() {
-  const router = useRouter();
+  const handleHireClick = () => {
+    const email = "giolstpro@gmail.com";
+    const subject = "Proposition d'embauche";
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
+  };
 
   return (
     <div className="flex flex-col bg-black min-h-screen relative overflow-hidden">
@@ -58,7 +62,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 w-full justify-center md:justify-start">
                 <CTAButton
                   label="M'embaucher"
-                  onClick={() => router.push("/about")}
+                  onClick={handleHireClick}
                   className="py-3 px-6 text-md w-full sm:w-auto"
                 />
                 <CTAButton
@@ -178,39 +182,39 @@ export default function Home() {
           </div>
 
           {/* Mon BUT en 180s */}
-            <div className=" w-full text-white flex flex-col items-center justify-center py-10 px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
-              <a className="font-bold text-center"> Mon BUT en 180s </a>
-              <br />  
-              <AuroraText 
-                colors={["#ffd322","#FFAE00","#ff6600"]} 
-                className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 text-center"
-              > Un aperçu de mon parcours académique </AuroraText>
+          <div className=" w-full text-white flex flex-col items-center justify-center py-10 px-4 sm:px-6 md:px-12 lg:px-20 relative z-10">
+            <a className="font-bold text-center"> Mon BUT en 180s </a>
+            <br />  
+            <AuroraText 
+              colors={["#ffd322","#FFAE00","#ff6600"]} 
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 text-center"
+            > Un aperçu de mon parcours académique </AuroraText>
 
-              <div className="relative w-full max-w-4xl mx-auto mt-8 sm:mt-10">
-                <ShineBorder shineColor={["#ffd322","#FFAE00","#ff6600"]}/>
-                <div className="relative w-full aspect-video">
-                <iframe 
-                  src="https://www.youtube.com/embed/e1KvWE0mUo0?si=GT-TE6z_pSwkoS_l" 
-                  title="Mon BUT en 180s" 
-                  allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" 
-                  className="absolute inset-0 w-full h-full"
-                ></iframe>
-                </div>
+            <div className="relative w-full max-w-4xl mx-auto mt-8 sm:mt-10">
+              <ShineBorder shineColor={["#ffd322","#FFAE00","#ff6600"]}/>
+              <div className="relative w-full aspect-video">
+              <iframe 
+                src="" 
+                title="Mon BUT en 180s" 
+                allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" 
+                className="absolute inset-0 w-full h-full"
+              ></iframe>
               </div>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center md:justify-start mt-6">
-                <CTAButton
-                  label="M'embaucher"
-                  onClick={() => router.push("/about")}
-                  className="py-3 px-6 text-lg w-full sm:w-auto"
-                />
-                <CTAButton
-                  label="Télécharger mon CV"
-                  onClick={() => window.open("/CV_LOSAT_Giovanni.pdf")}
-                  className="py-3 px-6 text-lg w-full sm:w-auto"
-                />
-              </div>
-            </div> 
+            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center md:justify-start mt-6">
+              <CTAButton
+                label="M'embaucher"
+                onClick={handleHireClick}
+                className="py-3 px-6 text-lg w-full sm:w-auto"
+              />
+              <CTAButton
+                label="Télécharger mon CV"
+                onClick={() => window.open("/CV_LOSAT_Giovanni.pdf")}
+                className="py-3 px-6 text-lg w-full sm:w-auto"
+              />
+            </div>
+          </div> 
 
         <Footer />
     </div>
