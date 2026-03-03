@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaHome, FaCode, FaFolder, FaUser, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
+import { FaHome, FaCode, FaFolder, FaUser, FaEnvelope, FaBars, FaTimes, FaFileDownload } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -14,7 +14,7 @@ export default function Navbar() {
     { href: "#skills", label: "Skills", icon: FaCode },
     { href: "#projet", label: "Projet", icon: FaFolder },
     { href: "#about", label: "À propos", icon: FaUser },
-    { href: "#contact", label: "Contact", icon: FaEnvelope },
+    { href: "/contact", label: "Contact", icon: FaEnvelope },
   ];
 
   useEffect(() => {
@@ -59,6 +59,15 @@ export default function Navbar() {
                 <span>{label}</span>
               </Link>
             ))}
+            <a
+              href="/CV_LOSAT_Giovanni.pdf"
+              download
+              onClick={() => setIsMenuOpen(false)}
+              className="flex items-center gap-2 text-sm px-2 py-2 rounded-md hover:text-orange-500"
+            >
+              <FaFileDownload size={14} />
+              <span>Mon CV</span>
+            </a>
           </div>
         </div>
       )}
@@ -71,6 +80,10 @@ export default function Navbar() {
             <span>{label}</span>
           </Link>
         ))}
+        <a href="/CV_LOSAT_Giovanni.pdf" download className="flex flex-col items-center text-xs hover:text-orange-500">
+          <FaFileDownload size={14} />
+          <span>Mon CV</span>
+        </a>
       </div>
     </nav>
   );

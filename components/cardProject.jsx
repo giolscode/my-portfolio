@@ -10,7 +10,7 @@ const cardProject = ({ title, imageSrc, description, linkUrl,technos }) => {
   };
 
   return (
-    <div className="flex flex-col bg-transparent border-2 border-white space-y-3 sm:space-y-4 p-3 sm:p-4 text-white rounded-lg w-full max-w-xs mx-auto hover:border-yellow-500 transition-colors duration-300 h-full">
+    <div className="flex flex-col bg-black border-2 border-white space-y-3 sm:space-y-4 p-3 sm:p-4 text-white rounded-lg w-full max-w-xs mx-auto hover:border-yellow-500 transition-colors duration-300 h-full">
       <div className="relative group">
         <img
           src={imageSrc}
