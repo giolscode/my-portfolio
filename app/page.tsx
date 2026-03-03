@@ -1,9 +1,8 @@
 "use client";
 
-import { DotPattern } from "@/components/ui/dot-pattern";
+import { LightRays } from "@/components/ui/light-rays";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { ShineBorder } from "@/components/ui/shine-border";
-import { Pointer } from "@/components/ui/pointer";
 import { motion } from "framer-motion";
 // import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
@@ -60,6 +59,27 @@ export default function Home() {
     },
   ];
 
+  const compIUT = [
+    {
+      ue: "UE6.1A - C1",
+      title: "Réaliser",
+      proof: "Développement complet de l'API CheckAuto (CRUD + Prisma) et réalisation de pages web en stage (CMUA).",
+      result: "Fonctionnalités livrées de bout en bout : conception, développement et validation.",
+    },
+    {
+      ue: "UE6.2 - C2",
+      title: "Optimiser",
+      proof: "Optimisation responsive du portfolio et amélioration de la structure UI des sections (skills, projets, timeline).",
+      result: "Meilleure lisibilité mobile/tablette et interface plus maintenable.",
+    },
+    {
+      ue: "UE6.6A - C6",
+      title: "Collaborer",
+      proof: "Travail en équipe sur Skyrage / TheLab VR / SAE avec Git, répartition des tâches et intégration collective.",
+      result: "Livraisons en groupe, coordination technique et suivi des contributions.",
+    },
+  ];
+
   const handleHireClick = () => {
     const email = "giolstpro@gmail.com";
     const subject = "Proposition d'embauche";
@@ -70,9 +90,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-black min-h-screen relative overflow-hidden">
-      <DotPattern width={20} height={20} radius={1} color="#ff6600" className="absolute inset-0 opacity-30" />
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <LightRays count={9} color="rgba(120, 180, 255, 0.22)" blur={42} speed={16} length="85vh"className="opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/55" />
+      </div>
       <Navbar />
-      <Pointer />
 
         {/* Accueil */}
           <div
@@ -86,7 +108,7 @@ export default function Home() {
               className="w-full md:w-1/2 flex justify-center md:justify-end md:pr-2"
             >
               <Image
-                src="/moi.jpeg"
+                src="/moi3.jpeg"
                 alt="Profile Image"
                 width={400}
                 height={500}
@@ -171,9 +193,48 @@ export default function Home() {
             </div>
           </motion.div>
 
+      {/* Compétences validées */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.35 }}
+        className="w-full text-white flex flex-col items-center justify-center py-8 px-4 sm:px-6 md:px-12 lg:px-20 relative z-10"
+      >
+        <AuroraText
+          colors={["#ffd322", "#FFAE00", "#ff6600"]}
+          className="text-2xl sm:text-3xl md:text-3xl font-bold text-center"
+        >
+          Compétences (UE)
+        </AuroraText>
+        <p className="text-white/70 text-sm sm:text-base mt-2 text-center">
+          Preuves concrètes de compétences travaillées en projet et en stage.
+        </p>
+
+        <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 mt-6">
+          {compIUT.map((item) => (
+            <div
+              key={item.ue}
+              className="rounded-lg border border-white/15 bg-white/[0.03] p-4 sm:p-5 hover:border-orange-500/50 transition-colors"
+            >
+              <p className="inline-block text-xs sm:text-sm text-orange-200 bg-orange-500/10 border border-orange-500/30 rounded-full px-2.5 py-0.5 mb-3">
+                {item.ue}
+              </p>
+              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-200 leading-relaxed">
+                <span className="font-semibold text-white">Preuve :</span> {item.proof}
+              </p>
+              <p className="text-sm text-gray-300 leading-relaxed mt-2">
+                <span className="font-semibold text-white">Résultat :</span> {item.result}
+              </p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
       {/* Projet */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.7, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.35 }}
