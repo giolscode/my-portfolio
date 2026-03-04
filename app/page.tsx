@@ -4,6 +4,7 @@ import { LightRays } from "@/components/ui/light-rays";
 import { AuroraText } from "@/components/ui/aurora-text";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { motion } from "framer-motion";
+import { Highlighter } from "@/components/ui/highlighter";
 // import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 import SkillCard from "@/components/skillCard";
@@ -54,7 +55,7 @@ export default function Home() {
         { icon: "github", title: "Github" },
         { icon: "postman", title: "Postman" },
         { icon: "apple", title: "Apple" },
-        { icon: "unrealengine", title: "Apple" },
+        { icon: "unrealengine", title: "Unreal Engine" },
       ],
     },
   ];
@@ -63,20 +64,17 @@ export default function Home() {
     {
       ue: "UE6.1A - C1",
       title: "Réaliser",
-      proof: "Développement complet de l'API CheckAuto (CRUD + Prisma) et réalisation de pages web en stage (CMUA).",
-      result: "Fonctionnalités livrées de bout en bout : conception, développement et validation.",
+      desc: "Créer des expériences numériques fluides et intuitives en intégrant design, fonctionnalité et performance pour le web.",
     },
     {
       ue: "UE6.2 - C2",
       title: "Optimiser",
-      proof: "Optimisation responsive du portfolio et amélioration de la structure UI des sections (skills, projets, timeline).",
-      result: "Meilleure lisibilité mobile/tablette et interface plus maintenable.",
+      desc: "Optimiser des applications web pour allier rapidité, accessibilité et maintenabilité, tout en maximisant l'expérience utilisateur et les performances techniques.",
     },
     {
       ue: "UE6.6A - C6",
       title: "Collaborer",
-      proof: "Travail en équipe sur Skyrage / TheLab VR / SAE avec Git, répartition des tâches et intégration collective.",
-      result: "Livraisons en groupe, coordination technique et suivi des contributions.",
+      desc: "Travailler en équipe sur des projets pour appliquer les bonnes pratiques de développement, partager les connaissances et livrer des solutions fonctionnelles et documentées dans les temps.",
     },
   ];
 
@@ -91,68 +89,55 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-black min-h-screen relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 z-0">
-        <LightRays count={9} color="rgba(120, 180, 255, 0.22)" blur={42} speed={16} length="85vh"className="opacity-80" />
+        <LightRays count={9} color="rgba(206, 228, 255, 0.22)" blur={42} speed={16} length="85vh"className="opacity-80" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/55" />
       </div>
       <Navbar />
 
         {/* Accueil */}
-          <div
-            id="Home"
-            className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-10 xl:px-100 relative z-10 gap-6 md:gap-12 pt-20 md:pt-12 "
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -80 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full md:w-1/2 flex justify-center md:justify-end md:pr-2"
-            >
-              <Image
-                src="/moi3.jpeg"
-                alt="Profile Image"
-                width={400}
-                height={500}
-                className="rounded-3xl border-2 border-orange-500 object-cover w-56 sm:w-64 md:w-72 lg:w-80 h-auto"
+        <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-10 xl:px-32 gap-8 md:gap-16 pt-20 md:pt-12">
+          {/* Image */}
+          <motion.div className="w-full md:w-1/2 flex justify-center md:justify-end md:pr-4">
+            <Image
+              src="/moi3.jpeg"
+              alt="Profile Image"
+              width={400}
+              height={500}
+              className="rounded-3xl border-2 border-orange-500 object-cover w-56 sm:w-64 md:w-72 lg:w-80 h-auto"
+            />
+          </motion.div>
+
+          {/* Texte et boutons */}
+          <motion.div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-white p-4 sm:p-6 max-w-2xl">
+            <h1 className="text-white text-3xl font-bold mb-4 text-center md:text-left">
+              Salut, je suis
+            </h1>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left" style={{ color: '#FFAE00' }}>
+              Giovanni Losat
+            </h2>
+            <h3 className="text-white text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
+              Développeur Full-stack Junior
+            </h3>
+            <p className="text-base md:text-lg mb-6 text-center md:text-left leading-relaxed">
+              Étudiant en <Highlighter action="underline" color="#fe9047"> troisième année de BUT informatique </Highlighter>  spécialisé dans la Réalisation d'application c'est-à-dire de la conception au développement jusqu'à la validation. 
+              <Highlighter action="highlight" color="#ffc400"> Prêt à relever des nouveaux défis à travers de nouveaux projets </Highlighter>  et évoluer dans le domaine de l'informatique dans un milieu professionnel.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 w-full justify-center md:justify-start">
+              <CTAButton
+                label="M'embaucher"
+                onClick={handleHireClick}
+                className="py-3 px-6 text-sm w-full sm:w-auto"
               />
-            </motion.div>
+              <CTAButton
+                label="Télécharger mon CV"
+                onClick={() => window.open("/CV_LOSAT_Giovanni.pdf")}
+                className="py-3 px-6 text-sm w-full sm:w-auto"
+              />
+            </div>
+          </motion.div>
+        </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 80 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="w-full md:w-1/2 flex flex-col items-center md:items-start text-white p-2 sm:p-4 max-w-xl"
-            >
-              <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-center md:text-left">
-                Salut, je suis
-              </h1>
-              <AuroraText
-                colors={["#ffd322", "#FFAE00", "#ff6600"]}
-                className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 text-center md:text-left"
-              >
-                Giovanni Losat
-              </AuroraText>
-              <h2 className="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-4 text-center md:text-left">
-                Développeur Full-stack Junior
-              </h2>
-              <p className="text-sm sm:text-base md:text-xl mb-8 leading-relaxed text-center md:text-left">
-                Étudiant en troisième année de BUT informatique spécialisé dans la Réalisation d'application c'est-à-dire de la conception au développement jusqu'à la validation.
-                Prêt à  relever des nouveaux défis à travers de nouveaux projets et évoluer dans le domaine de l'informatique dans un milieu professionel.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                <CTAButton
-                  label="M'embaucher"
-                  onClick={handleHireClick}
-                  className="py-2 px-4 text-sm w-full sm:w-auto"
-                />
-                <CTAButton
-                  label="Télécharger mon CV"
-                  onClick={() => window.open("/CV_LOSAT_Giovanni.pdf")}
-                  className="py-3 px-4 text-sm w-full sm:w-auto"
-                />
-              </div>
-            </motion.div>
-          </div>
 
         {/* Skills */}
           <motion.div 
@@ -207,9 +192,6 @@ export default function Home() {
         >
           Compétences (UE)
         </AuroraText>
-        <p className="text-white/70 text-sm sm:text-base mt-2 text-center">
-          Preuves concrètes de compétences travaillées en projet et en stage.
-        </p>
 
         <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 mt-6">
           {compIUT.map((item) => (
@@ -222,10 +204,7 @@ export default function Home() {
               </p>
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
               <p className="text-sm text-gray-200 leading-relaxed">
-                <span className="font-semibold text-white">Preuve :</span> {item.proof}
-              </p>
-              <p className="text-sm text-gray-300 leading-relaxed mt-2">
-                <span className="font-semibold text-white">Résultat :</span> {item.result}
+                <span className="font-semibold text-white"></span> {item.desc}
               </p>
             </div>
           ))}
@@ -245,6 +224,9 @@ export default function Home() {
             colors={["#ffd322","#FFAE00","#ff6600"]} 
             className="text-2xl sm:text-3xl md:text-3xl font-bold text-center p-4"
           > Quelques de mes projets </AuroraText>
+          <p className="text-white/70 text-sm sm:text-base mt-2 text-center">
+          Différents projets que j'ai pu réaliser durant mon cursus universitaire.
+        </p>
 
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-6 lg:gap-8 mt-6 justify-items-center">
             <CardProject title=" Portfolio " imageSrc="/portfolio.jpeg"  description="Une page web qui retrace mon parcours scolaire et professionelle avec mes différents projets." linkUrl={"https://github.com/giolscode/my-portfolio"} technos={["nextjs","tailwindcss"]} />
@@ -339,14 +321,16 @@ export default function Home() {
               className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 text-center"
             > Un aperçu de mon parcours académique </AuroraText>
 
-            <div className="relative w-full max-w-4xl mx-auto mt-8 sm:mt-10">
-              <ShineBorder shineColor={["#ffd322","#FFAE00","#ff6600"]}/>
+            <div className="relative w-full max-w-2xl mx-auto mt-8 sm:mt-10">
+              <ShineBorder shineColor={["#ffd322","#FFAE00","#ff6600"]} className="rounded-xl"/>
               <div className="relative w-full aspect-video">
               <iframe 
-                src="" 
+                src="https://www.youtube.com/embed/mSADkbn_MBg" 
                 title="Mon BUT en 180s" 
                 allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" 
-                className="absolute inset-0 w-full h-full"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full rounded-xl border-4 border-white/20"
               ></iframe>
               </div>
             </div>
