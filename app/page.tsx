@@ -5,7 +5,9 @@ import { AuroraText } from "@/components/ui/aurora-text";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { motion } from "framer-motion";
 import { Highlighter } from "@/components/ui/highlighter";
-// import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 import SkillCard from "@/components/skillCard";
 import Navbar from "@/components/navbar";
@@ -17,9 +19,17 @@ import FormationTimeline from "@/components/FormationTimeline";
 import Image from "next/image";
 
 export default function Home() {
+  const carouselAutoplay = useRef(
+    Autoplay({
+      delay: 4000,
+      stopOnInteraction: false,
+      stopOnMouseEnter: false,
+    })
+  );
+
   const skillGroups = [
     {
-      title: "Développement Frontend",
+      title: "Développement Frontend & Mobile",
       items: [
         { icon: "html", title: "HTML" },
         { icon: "css", title: "CSS" },
@@ -28,6 +38,7 @@ export default function Home() {
         { icon: "tailwindcss", title: "TailwindCSS" },
         { icon: "nextjs", title: "Next.js" },
         { icon: "wordpress", title: "Wordpress" },
+        { icon: "flutter", title: "Flutter" },
       ],
     },
     {
@@ -50,7 +61,6 @@ export default function Home() {
     {
       title: "Autres compétences",
       items: [
-        { icon: "flutter", title: "Flutter" },
         { icon: "godot", title: "Godot" },
         { icon: "github", title: "Github" },
         { icon: "postman", title: "Postman" },
@@ -63,28 +73,20 @@ export default function Home() {
   const compIUT = [
     {
       ue: "UE6.1A - C1",
-      title: "Réaliser",
+      title: "Réaliser des applications sur différents supports",
       desc: "Créer des expériences numériques fluides et intuitives en intégrant design, fonctionnalité et performance pour le web.",
     },
     {
       ue: "UE6.2 - C2",
-      title: "Optimiser",
+      title: "Optimiser des applications",
       desc: "Optimiser des applications web pour allier rapidité, accessibilité et maintenabilité, tout en maximisant l'expérience utilisateur et les performances techniques.",
     },
     {
       ue: "UE6.6A - C6",
-      title: "Collaborer",
+      title: "Manager une équipe informatique",
       desc: "Travailler en équipe sur des projets pour appliquer les bonnes pratiques de développement, partager les connaissances et livrer des solutions fonctionnelles et documentées dans les temps.",
     },
   ];
-
-  const handleHireClick = () => {
-    const email = "giolstpro@gmail.com";
-    const subject = "Proposition d'embauche";
-    const body = "Bonjour Giovanni,\n\nJe vous contacte pour une opportunité.\n";
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(gmailUrl, "_blank", "noopener,noreferrer");
-  };
 
   return (
     <div className="flex flex-col bg-black min-h-screen relative overflow-hidden">
@@ -94,91 +96,95 @@ export default function Home() {
       </div>
       <Navbar />
 
-        {/* Accueil */}
-        <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-10 xl:px-32 gap-8 md:gap-16 pt-20 md:pt-12">
-          {/* Image */}
-          <motion.div className="w-full md:w-1/2 flex justify-center md:justify-end md:pr-4">
-            <Image
-              src="/moi3.jpeg"
-              alt="Profile Image"
-              width={400}
-              height={500}
-              className="rounded-3xl border-2 border-orange-500 object-cover w-56 sm:w-64 md:w-72 lg:w-80 h-auto"
+      {/* Accueil */}
+      <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-10 xl:px-32 gap-8 md:gap-16 pt-20 md:pt-12">
+        {/* Image */}
+        <motion.div className="w-full md:w-1/2 flex justify-center md:justify-end md:pr-4">
+          <Image
+            src="/moi3.jpeg"
+            alt="Profile Image"
+            width={400}
+            height={500}
+            className="rounded-3xl border-2 border-orange-500 object-cover w-56 sm:w-64 md:w-72 lg:w-80 h-auto"
+          />
+        </motion.div>
+
+        {/* Texte et boutons */}
+        <motion.div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-white p-4 sm:p-6 max-w-2xl">
+          <h1 className="text-white text-3xl font-bold text-center md:text-left">
+            Salut, je suis
+          </h1>
+          {/* <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left" style={{ color: '#FFAE00' }}>
+            Giovanni Losat
+          </h2> */}
+          <AuroraText 
+            colors={["#ffd322","#FFAE00","#ff6600"]} 
+            className="text-4xl md:text-4xl font-bold mb-2 text-center md:text-left"
+          > Giovanni LOSAT </AuroraText>
+          <h3 className="text-white text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
+            Développeur Full-stack Junior
+          </h3>
+          <p className="text-base md:text-lg mb-6 text-center md:text-left leading-relaxed">
+            Étudiant en troisième année de BUT informatique spécialisé dans la Réalisation d'application c'est-à-dire de la conception au développement jusqu'à la validation. 
+            Prêt à relever des nouveaux défis à travers de nouveaux projets et évoluer dans le domaine de l'informatique dans un milieu professionnel.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 w-full justify-center md:justify-start">
+            <CTAButton
+              label="Me contacter"
+              onClick={()=> window.open("https://linktr.ee/Giovannilosat")}
+              className="py-3 px-6 text-sm w-full sm:w-auto"
             />
-          </motion.div>
+            <CTAButton
+              label="Télécharger mon CV"
+              onClick={() => window.open("/CV_LOSAT_Giovanni.pdf")}
+              className="py-3 px-6 text-sm w-full sm:w-auto"
+            />
+          </div>
+        </motion.div>
+      </div>
 
-          {/* Texte et boutons */}
-          <motion.div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-white p-4 sm:p-6 max-w-2xl">
-            <h1 className="text-white text-3xl font-bold mb-4 text-center md:text-left">
-              Salut, je suis
-            </h1>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center md:text-left" style={{ color: '#FFAE00' }}>
-              Giovanni Losat
-            </h2>
-            <h3 className="text-white text-2xl md:text-3xl font-bold mb-6 text-center md:text-left">
-              Développeur Full-stack Junior
-            </h3>
-            <p className="text-base md:text-lg mb-6 text-center md:text-left leading-relaxed">
-              Étudiant en <Highlighter action="underline" color="#fe9047"> troisième année de BUT informatique </Highlighter>  spécialisé dans la Réalisation d'application c'est-à-dire de la conception au développement jusqu'à la validation. 
-              <Highlighter action="highlight" color="#ffc400"> Prêt à relever des nouveaux défis à travers de nouveaux projets </Highlighter>  et évoluer dans le domaine de l'informatique dans un milieu professionnel.
-            </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 w-full justify-center md:justify-start">
-              <CTAButton
-                label="M'embaucher"
-                onClick={handleHireClick}
-                className="py-3 px-6 text-sm w-full sm:w-auto"
-              />
-              <CTAButton
-                label="Télécharger mon CV"
-                onClick={() => window.open("/CV_LOSAT_Giovanni.pdf")}
-                className="py-3 px-6 text-sm w-full sm:w-auto"
-              />
+    {/* Skills */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.35 }}
+        id="skills" 
+        className=" w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 relative z-10 py-8"
+      >
+        <AuroraText 
+          colors={["#ffd322","#FFAE00","#ff6600"]} 
+          className="text-3xl sm:text-3xl font-bold mt-6 text-center"
+        > Mon bagage technologique </AuroraText>
+        <p className="text-white/70 text-sm sm:text-base mt-2 text-center">
+          Technos utilisées en projets réels
+        </p>
+
+        <div className="w-full max-w-6xl mt-8 space-y-8">
+          {skillGroups.map((group, groupIndex) => (
+            <div key={group.title}>
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">{group.title}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4">
+                {group.items.map((skill, skillIndex) => (
+                  <motion.div
+                    key={`${skill.icon}-${skill.title}`}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35, delay: (groupIndex * 0.08) + (skillIndex * 0.04) }}
+                    viewport={{ once: true, amount: 0.4 }}
+                  >
+                    <SkillCard icon={skill.icon} title={skill.title} />
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          ))}
         </div>
+      </motion.div>
 
-
-        {/* Skills */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.35 }}
-            id="skills" 
-            className=" w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 md:px-10 relative z-10 py-8"
-          >
-            <AuroraText 
-              colors={["#ffd322","#FFAE00","#ff6600"]} 
-              className="text-3xl sm:text-3xl font-bold mt-6 text-center"
-            > Mon bagage technologique </AuroraText>
-            <p className="text-white/70 text-sm sm:text-base mt-2 text-center">
-              Technos utilisées en projets réels
-            </p>
-
-            <div className="w-full max-w-6xl mt-8 space-y-8">
-              {skillGroups.map((group, groupIndex) => (
-                <div key={group.title}>
-                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">{group.title}</h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4">
-                    {group.items.map((skill, skillIndex) => (
-                      <motion.div
-                        key={`${skill.icon}-${skill.title}`}
-                        initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, delay: (groupIndex * 0.08) + (skillIndex * 0.04) }}
-                        viewport={{ once: true, amount: 0.4 }}
-                      >
-                        <SkillCard icon={skill.icon} title={skill.title} />
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-      {/* Compétences validées */}
+      {/* Compétences universitaire */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -190,7 +196,7 @@ export default function Home() {
           colors={["#ffd322", "#FFAE00", "#ff6600"]}
           className="text-2xl sm:text-3xl md:text-3xl font-bold text-center"
         >
-          Compétences (UE)
+          Compétences universitaire (UE)
         </AuroraText>
 
         <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 mt-6">
@@ -248,29 +254,54 @@ export default function Home() {
             id="about"
             className=" w-full text-white flex flex-col items-center justify-center py-10 px-4 sm:px-6 md:px-12 lg:px-20 relative z-10"
           > 
-            {/* <AuroraText 
+            <AuroraText 
               colors={["#ffd322","#FFAE00","#ff6600"]} 
-              className="text-4xl font-bold mt-4 text-center"
+              className="text-3xl font-bold mt-4 text-center"
             > Un peu plus sur moi </AuroraText>
 
-            <p className="text-lg md:text-xl mt-8 leading-relaxed text-center max-w-6xl">
+            <p className="text-md md:text-md mt-8 leading-relaxed text-center max-w-6xl">
               Je suis originaire de la Martinique, une île des Caraïbes, et j'ai déménagé en France pour poursuivre mes études en informatique. 
               Passionné par la technologie depuis mon plus jeune âge, j'ai toujours été fasciné par la manière dont les applications et les sites web sont créés. 
-              En dehors de mes études, j'aime explorer de nouvelles technologies, travailler sur des projets personnels et contribuer à des projets open source. 
-            </p> */}
+              En dehors de mes études, j'aime tout ce qui est en rapport avec le basketball, à la musique, la mode et la lecture.
+            </p>
 
             {/* carousel */}
-            {/* <div className=" mt-10">
-              <Carousel className="flex justify-center items-center p-2">
+            <div className=" mt-10">
+              <Carousel
+                plugins={[carouselAutoplay.current]}
+                className="flex justify-center items-center p-2"
+              >
                 <CarouselContent>
-                  <CarouselItem> <img src="/moi.jpeg" alt="" className="w-full max-w-md h-auto object-cover rounded-lg"/> </CarouselItem>
-                  <CarouselItem> <img src="/moi2.jpeg" alt="" className="w-auto h-auto max-h-96 max-w-full"/> </CarouselItem>
-                  <CarouselItem> <img src="/moipiano.jpeg" alt="" className="w-48 h-48 object-cover"/> </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full max-w-md aspect-video mx-auto overflow-hidden rounded-lg bg-black/30">
+                      <video src="/mada.mp4" className="w-full h-full object-cover" autoPlay muted loop playsInline/>
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full max-w-md aspect-video mx-auto overflow-hidden rounded-lg bg-black/30">
+                      <img src="/moi2.jpeg" alt="" className="w-full h-full object-cover" />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full max-w-md aspect-video mx-auto overflow-hidden rounded-lg bg-black/30">
+                      <video
+                        src="/moibasket.mp4"
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      />
+                    </div>
+                  </CarouselItem>
+                  <CarouselItem>
+                    <div className="relative w-full max-w-md aspect-video mx-auto overflow-hidden rounded-lg bg-black/30">
+                      <img src="/musique.jpeg" alt="" className="w-full h-full object-cover" />
+                    </div>
+                  </CarouselItem>
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
               </Carousel>
-            </div> */}
+            </div>
 
             {/* schéma de mon parcours */}
             <div className="mt-4 w-full max-w-5xl">
@@ -297,8 +328,8 @@ export default function Home() {
                     description: "Job d'été",
                   },
                   {
-                    title: "Baccalauréat Général — Lycée La Jetée, Martinique",
-                    date: "2023 — Obtention en juin 2023 (Mention Assez Bien)",
+                    title: "Obtention du Baccalauréat Général — Lycée La Jetée, Martinique",
+                    date: "sept 2022 – Juin 2023",
                     description: "Spécialités : Mathématiques, Numérique et Sciences Informatiques (NSI), Anglais.",
                   },
                 ]}
@@ -337,8 +368,8 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 w-full justify-center mt-6">
               <CTAButton
-                label="M'embaucher"
-                onClick={handleHireClick}
+                label="Me contacter"
+                onClick={()=> window.open("https://linktr.ee/Giovannilosat")}
                 className="py-2 px-4 text-sm md:py-2 md:px-4 md:text-base w-full sm:w-auto"
               />
               <CTAButton

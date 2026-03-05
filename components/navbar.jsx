@@ -14,7 +14,6 @@ export default function Navbar() {
     { href: "#skills", label: "Skills", icon: FaCode },
     { href: "#projet", label: "Projet", icon: FaFolder },
     { href: "#about", label: "À propos", icon: FaUser },
-    { href: "/contact", label: "Contact", icon: FaEnvelope },
   ];
 
   useEffect(() => {
