@@ -1,39 +1,39 @@
 import React from "react";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { siteConfig } from "@/lib/config";
+import ContactLinks from "./ContactLinks";
 
 export default function Footer() {
   return (
-    <footer className="relative w-full text-white/80 py-6  mt-12 bottom-0">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="flex flex-col items-center">
-          <p className="text-sm mb-4">
-            © {new Date().getFullYear()} – Giovanni LOSAT
+    <footer className="border-t border-black/10 mt-8">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div>
+          <p className="font-display font-medium text-2xl text-[#151310]">Discutons.</p>
+          <p className="mt-1 text-sm text-black/50">
+            Toujours ouvert aux nouvelles opportunités et collaborations.
           </p>
+        </div>
+        <ContactLinks />
+      </div>
 
-          <div className="flex space-x-6">
-            <a
-              href="https://www.linkedin.com/in/giovanni-losat-a72a33328/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin size={22} />
-            </a>
-            <a
-              href="https://github.com/giolscode"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors"
-              aria-label="GitHub"
-            >
-              <FaGithub size={22} />
-            </a>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-white/20 text-center text-xs text-white/60">
-            <p>Portfolio conçu et développé avec passion</p>
-          </div>
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 pb-8 flex flex-wrap items-center justify-between gap-3 text-xs text-black/40">
+        <p>© {new Date().getFullYear()} {siteConfig.name}</p>
+        <div className="flex items-center gap-4">
+          <a
+            href={siteConfig.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#F97316] transition-colors"
+          >
+            GitHub
+          </a>
+          <a
+            href={siteConfig.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#F97316] transition-colors"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>
