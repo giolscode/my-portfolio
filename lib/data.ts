@@ -52,13 +52,22 @@ export const skillGroups = [
   },
 ];
 
-export const timelineItems = [
+type TimelineItem = {
+  title: string;
+  date: string;
+  description: string;
+  logoDomain?: string;
+  technos?: string[];
+};
+
+export const timelineItems: TimelineItem[] = [
   {
     title: "Chargé de projet Digital - ArcelorMittal",
     date: "🚀 Contrat en cours",
     description:
       "Participation à la digitalisation des processus du service ressource humaine.",
     logoDomain: "arcelormittal.com",
+    technos: [],
   },
   {
     title: "Développeur Full-Stack - Innodev Solutions",
@@ -66,6 +75,7 @@ export const timelineItems = [
     description:
       "Participation au développement d'une interface administrateur web.",
     logoDomain: "innodevsolutions.fr",
+    technos: ["Angular", "Node.js", "MySQL", "PrimeNG","TailwindCSS"],
   },
   {
     title: "Développeur web — CMUA Dunkerque",
@@ -73,6 +83,7 @@ export const timelineItems = [
     description:
       "Conception et développement d'un ensemble de pages pour la gestion des archives numérisées du site web.",
     logoDomain: "archives-dunkerque.fr",
+    technos: ["HTML", "CSS", "JavaScript"],
   },
 ];
 

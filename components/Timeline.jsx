@@ -46,6 +46,15 @@ const Timeline = ({
               {item.description && (
                 <p className="mt-2 text-sm text-black/60 leading-relaxed">{item.description}</p>
               )}
+              {item.technos && item.technos.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+                  {item.technos.map((t) => (
+                    <span key={t} className="text-[10px] font-mono uppercase tracking-wide text-[#F97316]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         );

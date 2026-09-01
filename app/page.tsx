@@ -67,7 +67,10 @@ export default function Home() {
         {/* Skills */}
         <section id="skills" className="py-16 sm:py-20">
           <Reveal>
-            <SectionHeading title="Compétences" dotClass="bg-[#F97316]" />
+            <SectionHeading
+              title="Compétences techniques"
+              dotClass="bg-[#F97316]"
+            />
             <p className="text-sm text-black/50 max-w-md mb-6">
               Technologies utilisées en projets réels.
             </p>

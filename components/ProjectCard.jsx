@@ -3,6 +3,16 @@
 import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
+/**
+ * @param {{
+ *   index?: string,
+ *   title?: string,
+ *   description?: string,
+ *   imageSrc?: string,
+ *   linkUrl?: string,
+ *   technos?: string[],
+ * }} props
+ */
 const ProjectCard = ({ index, title, description, imageSrc, linkUrl, technos = [] }) => {
   const hasLink = Boolean(linkUrl);
 
